@@ -40,33 +40,26 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/search")
-    public ResponseEntity<List<Employee>> search(@RequestParam String name,
-        @RequestParam String email) {
+    public ResponseEntity<List<Employee>> search(@RequestParam String name, @RequestParam String email) {
         logger.info("Searching for employees. Name: {}, email: {}", name, email);
         return ResponseEntity.ok(employeeService.search(name, email));
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<CreateEmployeeResponseDTO> createEmployee(
-        @Valid @RequestBody CreateEmployeeRequestDTO request) {
-        logger.info("Creating employee. Name: {}, email: {}", request.getName(),
-            request.getEmail());
-        return ResponseEntity.status(HttpStatus.CREATED)
-            .body(employeeService.createEmployee(request));
+    public ResponseEntity<CreateEmployeeResponseDTO> createEmployee(@Valid @RequestBody CreateEmployeeRequestDTO request) {
+        logger.info("Creating employee. Name: {}, email: {}", request.getName(), request.getEmail());
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(request));
     }
 
     @PatchMapping(value = "/modify")
-    public ResponseEntity<Void> modifyEmployee(
-        @Valid @RequestBody ModifyEmployeeRequestDTO request) {
-        logger.info("Modifying employee. Name: {}, email: {}", request.getName(),
-            request.getEmail());
+    public ResponseEntity<Void> modifyEmployee(@Valid @RequestBody ModifyEmployeeRequestDTO request) {
+        logger.info("Modifying employee. Name: {}, email: {}", request.getName(), request.getEmail());
         employeeService.modifyEmployee(request);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping(value = "/delete/{uuid}")
-    public ResponseEntity<Void> deleteEmployee(
-        @PathVariable String uuid) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable String uuid) {
         logger.info("Deleting employee: {}", uuid);
         employeeService.deleteEmployee(uuid);
         return ResponseEntity.ok().build();

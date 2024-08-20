@@ -24,8 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional(readOnly = true)
     @Override
     public List<Employee> search(String name, String email) {
-        return employeeRepository.findByNameStartingWithAndEmailEndingWithIgnoreCaseOrderByNameDesc(
-            name, email);
+        return employeeRepository.findByNameStartingWithAndEmailEndingWithIgnoreCaseOrderByNameDesc(name, email);
     }
 
     @Transactional(readOnly = true)
@@ -38,8 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public CreateEmployeeResponseDTO createEmployee(CreateEmployeeRequestDTO request) {
         if (employeeRepository.existsByEmail(request.getEmail())) {
-            throw new EmailAlreadyExistsException(
-                "Ezzel az email címmel már rögzítettek munkavállalót: " + request.getEmail());
+            throw new EmailAlreadyExistsException("Ezzel az email címmel már rögzítettek munkavállalót: " + request.getEmail());
         }
         Employee employee = new Employee();
         employee.setUuid(UUID.randomUUID().toString());
@@ -53,12 +51,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void modifyEmployee(ModifyEmployeeRequestDTO request) {
         Employee employee = employeeRepository.findByUuid(request.getUuid()).orElseThrow(
-            () -> new EntityNotFoundException(
-                "Employee is not found with uuid: " + request.getUuid()));
+            () -> new EntityNotFoundException("Employee is not found with uuid: " + request.getUuid()));
         if (!request.getEmail().equals(employee.getEmail())
             && employeeRepository.existsByEmail(request.getEmail())) {
-            throw new EmailAlreadyExistsException(
-                "Ezzel az email címmel már rögzítettek munkavállalót: " + request.getEmail());
+            throw new EmailAlreadyExistsException("Ezzel az email címmel már rögzítettek munkavállalót: " + request.getEmail());
         }
         employee.setEmail(request.getEmail());
         employee.setName(request.getName());

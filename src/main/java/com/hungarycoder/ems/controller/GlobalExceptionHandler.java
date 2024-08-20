@@ -20,24 +20,21 @@ public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorResponseDTO> handleEntityNotFoundException(
-        EntityNotFoundException ex) {
+    public ResponseEntity<ErrorResponseDTO> handleEntityNotFoundException(EntityNotFoundException ex) {
         logger.error(ex.getMessage());
         ErrorResponseDTO errorResponse = new ErrorResponseDTO(ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(EmailAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponseDTO> handleEmailAlreadyExistsException(
-        EmailAlreadyExistsException ex) {
+    public ResponseEntity<ErrorResponseDTO> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
         logger.error(ex.getMessage());
         ErrorResponseDTO errorResponse = new ErrorResponseDTO(ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<ValidationErrorResponseDTO>> handleValidationExceptions(
-        MethodArgumentNotValidException ex) {
+    public ResponseEntity<List<ValidationErrorResponseDTO>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         logger.error("validation error: ", ex);
         List<ValidationErrorResponseDTO> errors = ex.getBindingResult()
             .getFieldErrors()
@@ -54,9 +51,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    private ValidationErrorResponseDTO mapFieldErrorToValidationErrorResponse(
-        FieldError fieldError) {
-        return new ValidationErrorResponseDTO(fieldError.getField(),
-            fieldError.getDefaultMessage());
+    private ValidationErrorResponseDTO mapFieldErrorToValidationErrorResponse(FieldError fieldError) {
+        return new ValidationErrorResponseDTO(fieldError.getField(), fieldError.getDefaultMessage());
     }
 }

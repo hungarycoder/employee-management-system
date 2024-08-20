@@ -36,8 +36,7 @@ class EmployeeManagementSystemApplicationTests {
 
     @Test
     void testCreateEmployeeSuccess() {
-        CreateEmployeeRequestDTO request = new CreateEmployeeRequestDTO("John Doe",
-            "john.doe@example.com");
+        CreateEmployeeRequestDTO request = new CreateEmployeeRequestDTO("John Doe", "john.doe@example.com");
 
         CreateEmployeeResponseDTO response = employeeService.createEmployee(request);
 
@@ -55,15 +54,12 @@ class EmployeeManagementSystemApplicationTests {
         existingEmployee.setEmail("jane.doe@example.com");
         employeeRepository.save(existingEmployee);
 
-        CreateEmployeeRequestDTO request = new CreateEmployeeRequestDTO("John Doe",
-            "jane.doe@example.com");
+        CreateEmployeeRequestDTO request = new CreateEmployeeRequestDTO("John Doe", "jane.doe@example.com");
 
         EmailAlreadyExistsException exception = assertThrows(EmailAlreadyExistsException.class,
             () -> employeeService.createEmployee(request));
 
-        assertEquals(
-            "Ezzel az email címmel már rögzítettek munkavállalót: " + existingEmployee.getEmail(),
-            exception.getMessage());
+        assertEquals("Ezzel az email címmel már rögzítettek munkavállalót: " + existingEmployee.getEmail(), exception.getMessage());
     }
 
     @Test
