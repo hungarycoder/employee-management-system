@@ -25,6 +25,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()).disable())
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(toH2Console()).permitAll()
+                .requestMatchers("/actuator/**").permitAll()
                 .anyRequest().authenticated())
             .headers(headers -> headers.frameOptions(FrameOptionsConfig::sameOrigin))
             .httpBasic(withDefaults());
