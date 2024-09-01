@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "86d25d74-0b70-4e9e-acfc-caad0ad613a2",
+		"_postman_id": "0977eece-d89f-48c8-83f0-3430d32e6359",
 		"name": "Employee Management System",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10243229"
@@ -214,7 +214,19 @@
 			"name": "/actuator",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ems_user",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],

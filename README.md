@@ -1,7 +1,7 @@
 # Employee-Management-System (EMS)
 
-Az **Employee-Management-System (EMS)** nevű alkalmazás a **Hung(a)ry Coder** nevű Udemy csatorna *
-*"Spring: Alapok Mesterfokon Kezdőknek"** című kurzusának demonstrációs céljára készítettünk. Az
+Az **Employee-Management-System (EMS)** nevű alkalmazás a **Hung(a)ry Coder** nevű Udemy csatorna
+*"Spring boot: Alapok Mesterfokon Kezdőknek"* című kurzusának demonstrációs céljára készítettünk. Az
 alkalmazás célja, hogy bemutassa a Spring Boot alapvető funkcióit és a Java modern eszköztárát.
 
 ## Technológiai Részletek
@@ -32,7 +32,7 @@ A projekt fordításához és a szükséges függőségek letöltéséhez futtas
 projekt gyökérkönyvtárában:
 
 ```bash
-mvn clean install
+mvnw.cmd clean install
 ```
 
 ### Futtatás
@@ -40,7 +40,7 @@ mvn clean install
 Az alkalmazás futtatásához használd a következő parancsot:
 
 ```bash
-mvn spring-boot:run
+mvnw.cmd spring-boot:run
 ```
 
 Ezt követően az alkalmazás elérhető lesz a http://localhost:8080 címen.
@@ -52,6 +52,6 @@ http://localhost:8080/h2-console
 
 Belépési adatok az application.yaml-ben találhatóak.
 
-Megjegyzés: Mivel az alkalmazás H2 in-memory adatbázist használ, az adatok minden
+Megjegyzés: Mivel az alkalmazás H2 in-memory adatbázist használ, a táblák minden
 alkalmazásindításkor törlődnek és újra létrejönnek.
 
