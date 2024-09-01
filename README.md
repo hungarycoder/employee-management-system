@@ -1,7 +1,7 @@
 # Employee-Management-System (EMS)
 
 Az **Employee-Management-System (EMS)** nevű alkalmazás a **Hung(a)ry Coder** nevű Udemy csatorna
-*"Spring boot: Alapok Mesterfokon Kezdőknek"* című kurzusának demonstrációs céljára készítettünk. Az
+*"Spring Boot: Alapok Mesterfokon Kezdőknek"* című kurzusának demonstrációs céljára készítettünk. Az
 alkalmazás célja, hogy bemutassa a Spring Boot alapvető funkcióit és a Java modern eszköztárát.
 
 ## Technológiai Részletek
